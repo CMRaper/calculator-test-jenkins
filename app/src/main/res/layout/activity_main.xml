@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="vm"
+            type="sample.nuesmart.com.testotherconnection.MainViewModel"/>
+    </data>
+    <android.support.constraint.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="sample.nuesmart.com.testotherconnection.MainActivity">
+
+        <EditText
+            android:id="@+id/first_edittext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint = "First number"
+            android:inputType="number"
+            app:addTextChangedListener="@{vm.onFirstNumberTextChanged()}"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <EditText
+            android:id="@+id/second_edittext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint = "Second number"
+            android:inputType="number"
+            app:addTextChangedListener="@{vm.onSecondNumberTextChanged()}"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/first_edittext"
+            />
+
+        <TextView
+            android:id="@+id/result_textview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{vm.result}"
+            android:padding="10dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/second_edittext"/>
+
+        <Button
+            android:id="@+id/calculate_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Calculate"
+            android:onClick="@{vm.onCalculateButtonTapped()}"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/result_textview"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
